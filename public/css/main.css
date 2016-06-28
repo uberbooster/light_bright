@@ -10,8 +10,15 @@
   height: 25px;
   background-color: white;
   display: inline-block;
+  margin-bottom: -6px;
+  margin-right: -1px;
 }
 
 .border {
   border: solid 1px black;
+}
+
+.row {
+  margin: 0 auto;
+  width: 30%;
 }
