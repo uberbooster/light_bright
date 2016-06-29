@@ -2,9 +2,27 @@ $(document).ready(function(){
   var container = $('.container');
   var numOfRows = 10;
   var numOfCols = 10;
+  var colorClasses = ['white', 'red', 'green', 'blue'];
+  var selectedColor;
 
+  initColorSelectors();
   initGrid();
   addClickHandlers();
+
+  function initColorSelectors(){
+    var row = $('<div></div>');
+    row.addClass('row');
+    for(var i = 0; i < colorClasses.length; i += 1){
+      var colorSelectors = $('<div></div>');
+      console.log(colorClasses[i]);
+      colorSelectors.addClass("color-selector border " + colorClasses[i]);
+      row.append(colorSelectors);
+    }
+    container.append(row);
+console.log("start");
+    var hr = document.createElement('hr');
+console.log("end");
+  }
 
   function initGrid(){
     for(var i = 0; i < numOfRows; i += 1){
@@ -21,17 +39,38 @@ $(document).ready(function(){
 
   function addClickHandlers(){
     var cells = $('.cell');
-    cells.on('mouseover', changeColor);
+    var colorSelectors = $('.color-selector');
+    colorSelectors.on('click', selectColor);
+    cells.on('click', changeColor);
+  };
+
+  function selectColor(){
+    console.log("Running selectColor function");
+    if($(this).hasClass('white')){
+     selectedColor = "white";
+    } else {
+     if($(this).hasClass('red')){
+       selectedColor = "red";
+     } else {
+       if($(this).hasClass('green')){
+         selectedColor = "green";
+       } else {
+         if($(this).hasClass('blue')){
+           selectedColor = "blue";
+         }
+       }
+     }
+    }
   };
 
   function changeColor(){
     //$(this).toggleClass('red');
 
-    var colorClasses = ['white', 'red', 'green', 'blue'];
+
     var colorCycle = Math.round(Math.random() * (colorClasses.length - 1));
     var color = colorClasses[colorCycle];
     $(this).removeClass(colorClasses.join(' '));
-    $(this).addClass(color);
+    $(this).addClass(selectedColor);
 
   };
 });
