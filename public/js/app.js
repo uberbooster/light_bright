@@ -1,13 +1,12 @@
 $(document).ready(function(){
   var container = $('.container');
-  var footer = $('.footer');
-  var numOfRows = 10;
-  var numOfCols = 10;
-  var colorClasses = ["white", "red", "green", "blue", "purple", "pink", "lavender", "indigo", "salmon", "orange", "yellow", "lime", "aqua", "gray"];
+  var numOfRows = $('#grid-rows');
+  var numOfCols = $('#grid-cols');
+  var colorClasses = ["white", "red", "green", "blue", "purple", "orange", "yellow",];
   var selectedColor;
 
   initColorSelectors();
-  initGrid();
+
   addClickHandlers();
 
   function initColorSelectors(){
@@ -19,15 +18,17 @@ $(document).ready(function(){
       colorSelectors.addClass("color-selector border " + colorClasses[i]);
       row.append(colorSelectors);
     }
+
     container.append(row);
+    container.append("<span>Selected Color: </span><div class='border current-color-box'></div>");
     container.append($('<hr />'));
   }
 
   function initGrid(){
-    for(var i = 0; i < numOfRows; i += 1){
+    for(var i = 0; i < numOfRows.val(); i += 1){
       var row = $('<div></div>'); //creates a new element in your HTML
       row.addClass('row');
-      for(var j = 0; j < numOfCols; j += 1){
+      for(var j = 0; j < numOfCols.val(); j += 1){
         var cell = $('<div></div>');
         cell.addClass('cell border');
         row.append(cell);
@@ -39,8 +40,10 @@ $(document).ready(function(){
   function addClickHandlers(){
     var cells = $('.cell');
     var colorSelectors = $('.color-selector');
+    var submitButton = $('#submit');
     colorSelectors.on('click', selectColor);
     cells.on('click', changeColor);
+    submitButton.on('click', initGrid());
   };
 
   function selectColor(){
@@ -53,16 +56,38 @@ $(document).ready(function(){
         currentColorBox.addClass(selectedColor);
       };
     }
+
   };
 
   function changeColor(){
-    //$(this).toggleClass('red');
-
-
-    var colorCycle = Math.round(Math.random() * (colorClasses.length - 1));
-    var color = colorClasses[colorCycle];
     $(this).removeClass(colorClasses.join(' '));
     $(this).addClass(selectedColor);
-
   };
+
+  // $(function() {
+  //
+  //
+  //
+  //   $(".button").on("click", function() {
+  //
+  //     var $button = $(this);
+  //     var oldValue = $button.parent().find("input").val();
+  //
+  //     if ($button.text() == "+") {
+  //   	  var newVal = parseFloat(oldValue) + 1;
+  //   	} else {
+  // 	   // Don't allow decrementing below zero
+  //       if (oldValue > 1) {
+  //         var newVal = parseFloat(oldValue) - 1;
+  // 	    } else {
+  //         newVal = 1;
+  //       }
+  // 	  }
+  //
+  //     $button.parent().find("input").val(newVal);
+  //
+  //   });
+  //
+  // });
+
 });

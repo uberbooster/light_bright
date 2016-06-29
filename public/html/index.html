@@ -7,11 +7,25 @@
     <title>Light bright</title>
   </head>
   <body>
-    <div class="container"></div>
-    <div class="footer">
-      <div class="row">
-        <p>Selected color: </p>
-        <div class="border current-color-box"></div>
+    <div class="container">
+      <div>
+        <form>
+          <div class="numbers-row">
+            <label for="name">Rows</label>
+            <input type="text" name="grid-rows" id="grid-rows" value="40">
+            <img src="/images/inc.png" alt="">
+            <img src="/images/dec.png" alt="">
+          </div>
+          <div class="numbers-row">
+            <label for="name">Columns</label>
+            <input type="text" name="grid-cols" id="grid-cols" value="40">
+            <img src="/images/inc.png" alt="">
+            <img src="/images/dec.png" alt="">
+          </div>
+          <div class="buttons">
+            <button type="button" id="submit">Submit</button>
+          </div>
+        </form>
       </div>
     </div>
     <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="   crossorigin="anonymous"></script>

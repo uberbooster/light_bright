@@ -29,13 +29,13 @@
 
 .row {
   margin: 0 auto;
-  width: 30%;
+  
 }
 
 .current-color-box {
   width: 250px;
   height: 25px;
-  background-color: white;  
+  background-color: white;
   margin-top: 20px;
 }
 
