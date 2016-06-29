@@ -2,7 +2,7 @@ $(document).ready(function(){
   var container = $('.container');
   var numOfRows = 10;
   var numOfCols = 10;
-  var colorClasses = ['white', 'red', 'green', 'blue'];
+  var colorClasses = ['white', 'red', 'green', 'blue', 'purple'];
   var selectedColor;
 
   initColorSelectors();
@@ -15,16 +15,15 @@ $(document).ready(function(){
     for(var i = 0; i < colorClasses.length; i += 1){
       var colorSelectors = $('<div></div>');
       console.log(colorClasses[i]);
-      colorSelectors.addClass("color-selector border " + colorClasses[i]);
+      colorSelectors.addClass("color-selector " + colorClasses[i]);
       row.append(colorSelectors);
     }
     container.append(row);
-console.log("start");
-    var hr = document.createElement('hr');
-console.log("end");
+    container.append($('<hr />'));
   }
 
   function initGrid(){
+
     for(var i = 0; i < numOfRows; i += 1){
       var row = $('<div></div>'); //creates a new element in your HTML
       row.addClass('row');
@@ -46,21 +45,28 @@ console.log("end");
 
   function selectColor(){
     console.log("Running selectColor function");
-    if($(this).hasClass('white')){
-     selectedColor = "white";
-    } else {
-     if($(this).hasClass('red')){
-       selectedColor = "red";
-     } else {
-       if($(this).hasClass('green')){
-         selectedColor = "green";
-       } else {
-         if($(this).hasClass('blue')){
-           selectedColor = "blue";
-         }
-       }
-     }
+    for(var i = 0; i < colorClasses.length; i += 1){
+      console.log(colorClasses[i]);
+      if($(this).hasClass(colorClasses[i])){
+        selectedColor = colorClasses[i];
+      };
     }
+
+    // if($(this).hasClass('white')){
+    //  selectedColor = "white";
+    // } else {
+    //  if($(this).hasClass('red')){
+    //    selectedColor = "red";
+    //  } else {
+    //    if($(this).hasClass('green')){
+    //      selectedColor = "green";
+    //    } else {
+    //      if($(this).hasClass('blue')){
+    //        selectedColor = "blue";
+    //      }
+    //    }
+    //  }
+    // }
   };
 
   function changeColor(){
