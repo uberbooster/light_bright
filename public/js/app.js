@@ -6,7 +6,7 @@ $(document).ready(function(){
   var selectedColor;
 
   initColorSelectors();
-
+  initGrid();
   addClickHandlers();
 
   function initColorSelectors(){
