@@ -1,8 +1,9 @@
 $(document).ready(function(){
   var container = $('.container');
+  var footer = $('.footer');
   var numOfRows = 10;
   var numOfCols = 10;
-  var colorClasses = ['white', 'red', 'green', 'blue', 'purple'];
+  var colorClasses = ["white", "red", "green", "blue", "purple", "pink", "lavender", "indigo", "salmon", "orange", "yellow", "lime", "aqua", "gray"];
   var selectedColor;
 
   initColorSelectors();
@@ -15,7 +16,7 @@ $(document).ready(function(){
     for(var i = 0; i < colorClasses.length; i += 1){
       var colorSelectors = $('<div></div>');
       console.log(colorClasses[i]);
-      colorSelectors.addClass("color-selector " + colorClasses[i]);
+      colorSelectors.addClass("color-selector border " + colorClasses[i]);
       row.append(colorSelectors);
     }
     container.append(row);
@@ -23,7 +24,6 @@ $(document).ready(function(){
   }
 
   function initGrid(){
-
     for(var i = 0; i < numOfRows; i += 1){
       var row = $('<div></div>'); //creates a new element in your HTML
       row.addClass('row');
@@ -44,29 +44,15 @@ $(document).ready(function(){
   };
 
   function selectColor(){
-    console.log("Running selectColor function");
+    var currentColorBox = $('.current-color-box');
     for(var i = 0; i < colorClasses.length; i += 1){
-      console.log(colorClasses[i]);
       if($(this).hasClass(colorClasses[i])){
         selectedColor = colorClasses[i];
+        console.log("Selected color is " + colorClasses[i]);
+        currentColorBox.removeClass(colorClasses.join(' '));
+        currentColorBox.addClass(selectedColor);
       };
     }
-
-    // if($(this).hasClass('white')){
-    //  selectedColor = "white";
-    // } else {
-    //  if($(this).hasClass('red')){
-    //    selectedColor = "red";
-    //  } else {
-    //    if($(this).hasClass('green')){
-    //      selectedColor = "green";
-    //    } else {
-    //      if($(this).hasClass('blue')){
-    //        selectedColor = "blue";
-    //      }
-    //    }
-    //  }
-    // }
   };
 
   function changeColor(){
