@@ -62,8 +62,8 @@ console.log(numOfRows);
   function addPageClickHandlers(){
     var colorSelectors = $('.color-selector');
     colorSelectors.on('click', selectColor);
-    var submitButton = $('#submit');
-    submitButton.on('click', initGrid);
+    //var submitButton = $('#submit');
+    //submitButton.on('click', initGrid);
     $('.inc').on('click', increment);
     $('.dec').on('click', decrement);
   }

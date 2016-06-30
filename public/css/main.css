@@ -14,6 +14,11 @@
   margin-right: -1px;
 }
 
+.numbers-row {
+  font-size: 20px;
+  
+}
+
 .color-selector {
   width: 25px;
   height: 25px;
