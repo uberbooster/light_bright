@@ -2,7 +2,7 @@ $(document).ready(function(){
   var container = $('.container');
   var numOfRows = $('#grid-rows');
   var numOfCols = $('#grid-cols');
-  var colorClasses = ["white", "red", "green", "blue", "purple", "orange", "yellow", "pink", "lavender", "indigo", "salmon", "orange", "lime", "gray"];
+  var colorClasses = ["white", "red", "green", "blue", "purple", "orange", "yellow", "pink", "lavender", "indigo", "salmon", "lime", "gray"];
   var selectedColor;
 
   initColorSelectors();
