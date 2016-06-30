@@ -2,11 +2,10 @@ $(document).ready(function(){
   var container = $('.container');
   var numOfRows = $('#grid-rows');
   var numOfCols = $('#grid-cols');
-  var colorClasses = ["white", "red", "green", "blue", "purple", "orange", "yellow", "pink"];
+  var colorClasses = ["white", "red", "green", "blue", "purple", "orange", "yellow", "pink", "lavender", "indigo", "salmon", "orange", "lime", "gray"];
   var selectedColor;
 
   initColorSelectors();
-  //initGrid();
   addClickHandlers();
 
   function initColorSelectors(){
@@ -25,8 +24,6 @@ $(document).ready(function(){
 
   function initGrid(){
     $('.grid.row').remove();
-
-
     for(var i = 0; i < numOfRows.val(); i += 1){
       var row = $('<div></div>'); //creates a new element in your HTML
       row.addClass('grid row');
@@ -67,31 +64,5 @@ $(document).ready(function(){
     $(this).removeClass(colorClasses.join(' '));
     $(this).addClass(selectedColor);
   };
-
-  // $(function() {
-  //
-  //
-  //
-  //   $(".button").on("click", function() {
-  //
-  //     var $button = $(this);
-  //     var oldValue = $button.parent().find("input").val();
-  //
-  //     if ($button.text() == "+") {
-  //   	  var newVal = parseFloat(oldValue) + 1;
-  //   	} else {
-  // 	   // Don't allow decrementing below zero
-  //       if (oldValue > 1) {
-  //         var newVal = parseFloat(oldValue) - 1;
-  // 	    } else {
-  //         newVal = 1;
-  //       }
-  // 	  }
-  //
-  //     $button.parent().find("input").val(newVal);
-  //
-  //   });
-  //
-  // });
 
 });
