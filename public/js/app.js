@@ -5,8 +5,29 @@ $(document).ready(function(){
   var colorClasses = ["white", "red", "green", "blue", "purple", "orange", "yellow", "pink", "lavender", "indigo", "salmon", "lime", "gray"];
   var selectedColor;
 
+
+console.log(numOfRows);
+
+
   initColorSelectors();
-  addClickHandlers();
+  addPageClickHandlers();
+  addGridClickHandler();
+  initGrid();
+
+
+  function increment(){
+    var sib = $(this).siblings()[0];
+    var val = +$(sib).text();
+    if(val < 50){$(sib).text(val+1);};
+    initGrid();
+  };
+
+  function decrement(){
+    var sib = $(this).siblings()[0];
+    var val = +$(sib).text();
+    if(val > 10){$(sib).text(val-1);};
+    initGrid();
+  };
 
   function initColorSelectors(){
     var row = $('<div></div>');
@@ -24,26 +45,32 @@ $(document).ready(function(){
 
   function initGrid(){
     $('.grid.row').remove();
-    for(var i = 0; i < numOfRows.val(); i += 1){
+    console.log("Running initGrid");
+    for(var i = 0; i < +numOfRows.text(); i += 1){
       var row = $('<div></div>'); //creates a new element in your HTML
       row.addClass('grid row');
-      for(var j = 0; j < numOfCols.val(); j += 1){
+      for(var j = 0; j < +numOfCols.text(); j += 1){
         var cell = $('<div></div>');
         cell.addClass('cell border');
         row.append(cell);
       }
       container.append(row);
     }
-    addClickHandlers();
+    addGridClickHandler();
   };
 
-  function addClickHandlers(){
-    var cells = $('.cell');
+  function addPageClickHandlers(){
     var colorSelectors = $('.color-selector');
-    var submitButton = $('#submit');
     colorSelectors.on('click', selectColor);
-    cells.on('click', changeColor);
+    var submitButton = $('#submit');
     submitButton.on('click', initGrid);
+    $('.inc').on('click', increment);
+    $('.dec').on('click', decrement);
+  }
+
+  function addGridClickHandler(){
+    var cells = $('.cell');
+    cells.on('click', changeColor);
   };
 
   function selectColor(){
