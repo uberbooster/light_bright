@@ -2,11 +2,11 @@ $(document).ready(function(){
   var container = $('.container');
   var numOfRows = $('#grid-rows');
   var numOfCols = $('#grid-cols');
-  var colorClasses = ["white", "red", "green", "blue", "purple", "orange", "yellow",];
+  var colorClasses = ["white", "red", "green", "blue", "purple", "orange", "yellow", "pink"];
   var selectedColor;
 
   initColorSelectors();
-  initGrid();
+  //initGrid();
   addClickHandlers();
 
   function initColorSelectors(){
@@ -18,16 +18,18 @@ $(document).ready(function(){
       colorSelectors.addClass("color-selector border " + colorClasses[i]);
       row.append(colorSelectors);
     }
-
     container.append(row);
     container.append("<span>Selected Color: </span><div class='border current-color-box'></div>");
     container.append($('<hr />'));
   }
 
   function initGrid(){
+    $('.grid.row').remove();
+
+
     for(var i = 0; i < numOfRows.val(); i += 1){
       var row = $('<div></div>'); //creates a new element in your HTML
-      row.addClass('row');
+      row.addClass('grid row');
       for(var j = 0; j < numOfCols.val(); j += 1){
         var cell = $('<div></div>');
         cell.addClass('cell border');
@@ -35,6 +37,7 @@ $(document).ready(function(){
       }
       container.append(row);
     }
+    addClickHandlers();
   };
 
   function addClickHandlers(){
@@ -43,10 +46,11 @@ $(document).ready(function(){
     var submitButton = $('#submit');
     colorSelectors.on('click', selectColor);
     cells.on('click', changeColor);
-    submitButton.on('click', initGrid());
+    submitButton.on('click', initGrid);
   };
 
   function selectColor(){
+    console.log("Running selectColor");
     var currentColorBox = $('.current-color-box');
     for(var i = 0; i < colorClasses.length; i += 1){
       if($(this).hasClass(colorClasses[i])){
